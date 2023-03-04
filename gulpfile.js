@@ -1,4 +1,6 @@
 import gulp from 'gulp';
+import fileInclude from 'gulp-file-include';
+import htmlBeautify from 'gulp-html-beautify'
 import browserSync from 'browser-sync';
 import { deleteAsync } from 'del';
 import dartSass from 'sass';
@@ -8,7 +10,6 @@ import webpackStream from 'webpack-stream';
 import newer from 'gulp-newer';
 import imagemin from 'gulp-imagemin';
 import svgSprite from 'gulp-svg-sprite';
-
 import * as nodePath from 'path';
 const rootFolder = nodePath.basename(nodePath.resolve());
 
@@ -30,7 +31,7 @@ const path = {
 		sprite: `${srcFolder}/img/sprites/*.svg`,
 	},
 	watch: {
-		html: `${srcFolder}/*.html`,
+		html: `${srcFolder}/**/*.html`,
 		scss: `${srcFolder}/**/*.scss`,
 		js: `${srcFolder}/**/*.js`,
 		img: [`${srcFolder}/img/**/*.{png,jpeg,jpg,svg,gif}`, `!${srcFolder}/img/sprites/*.svg`],
@@ -47,7 +48,13 @@ const reset = () => {
 };
 
 const html = () => {
-	return gulp.src(path.src.html).pipe(gulp.dest(path.build.html)).pipe(browserSync.stream());
+	return gulp.src(path.src.html)
+	.pipe(fileInclude({
+		prefix: '@'
+	}))
+	.pipe(htmlBeautify())
+	.pipe(gulp.dest(path.build.html))
+	.pipe(browserSync.stream());
 };
 
 const scss = () => {
