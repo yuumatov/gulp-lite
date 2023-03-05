@@ -32,5 +32,8 @@
 		"sass": "^1.56.1",
 		"webpack": "^5.75.0",
 		"webpack-stream": "^7.0.0"
+	},
+	"dependencies": {
+		"just-validate": "^4.2.0"
 	}
 }
