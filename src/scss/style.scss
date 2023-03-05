@@ -2,4 +2,7 @@
 @import './helpers/mixins.scss';
 @import './helpers/fonts.scss';
 @import './helpers/reset.scss';
-@import './helpers/base.scss';
+
+@import './base/base.scss';
+@import './base/header.scss';
+@import './base/footer.scss';

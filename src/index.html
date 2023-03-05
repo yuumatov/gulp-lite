@@ -1,34 +1,21 @@
 <!DOCTYPE html>
 <html lang="ru">
-@include("html/head.html")
+@include("html/head.html", {
+"title": "Главная страница"
+})
 
-<body>
-	@include("html/header.html")
+<body class="page">
+	<div class="page__inner">
+		@include("html/header.html")
 
-	<main class="main">
-		<form action="index.html" method="get" id="basic_form">
-			<div class="form-element">
-				<label for="basic_name">Имя</label>
-				<input id="basic_name" type="text" placeholder="Имя">
-				<div class="just-validate-error-label">Подсказка для поля ввода</div>
+		<main class="main">
+			<div class="container">
+				<span>Тело</span>
 			</div>
-			<div class="form-element">
-				<label for="basic_email">E-mail</label>
-				<input id="basic_email" type="text" placeholder="E-mail">
-			</div>
-			<div class="form-element">
-				<label for="basic_password">Пароль</label>
-				<input id="basic_password" type="text" placeholder="Пароль">
-			</div>
-			<div class="form-element">
-				<label for="basic_age">Возраст</label>
-				<input id="basic_age" type="text" placeholder="Возраст">
-			</div>
-			<button type="submit">Отправить</button>
-		</form>
-	</main>
+		</main>
 
-	@include("html/footer.html")
+		@include("html/footer.html")
+	</div>
 </body>
 
 </html>
