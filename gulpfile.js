@@ -49,12 +49,12 @@ const reset = () => {
 
 const html = () => {
 	return gulp.src(path.src.html)
-	.pipe(fileInclude({
-		prefix: '@'
-	}))
-	.pipe(htmlBeautify())
-	.pipe(gulp.dest(path.build.html))
-	.pipe(browserSync.stream());
+		.pipe(fileInclude({
+			prefix: '@'
+		}))
+		.pipe(htmlBeautify())
+		.pipe(gulp.dest(path.build.html))
+		.pipe(browserSync.stream());
 };
 
 const scss = () => {
@@ -70,9 +70,9 @@ const js = () => {
 		.src(path.src.js, { sourcemaps: true })
 		.pipe(
 			webpackStream({
-				mode: 'development',
+				mode: 'production',
 				output: {
-					filename: 'script.js',
+					filename: 'build.js'
 				},
 			})
 		)
